@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Static-ish React Components</title>
+  <link rel="stylesheet" href="styles/css/reset.css">
+  <link rel="stylesheet" href="styles/css/style.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/css/prism.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.11.0/beautify.js"></script>
+</head>
+
+<body id="top">
+  <div class="main">
+    <div class="row">
+      <div class="leftColumn">
+        <a href="#top" class="active">Intro</a>
+        <a href="#examples">Examples</a>
+        <a href="#basic">Basic Usage</a>
+        <a href="#passedprops">Passed Props</a>
+        <a href="#clickhandlers">Click Handlers</a>
+        <a href="#nested">Nested</a>
+        <a href="#stateful">Stateful</a>
+        <a href="#callbacks">Callbacks</a>
+      </div>
+      <div class="rightColumn">
+        <a class="anchorLink" id="intro"></a>
+        <h1>Static-ish React Components</h1>
+        <p>How to replace static HTML elements with React components.</p>
+        <br>
+        <h2>Intro</h2>
+        <p>Let's say we want to replace a static HTML button with a componentized version.</p>
+        <p>Define your Button component as usual, but use the <code>dangerouslySetInnerHTML</code> prop to pass any children through to the Button's inner HTML:</p>
+        <div class="code">
+          <label>Button.js</label>
+          <pre>
+              <code class="language-jsx">import React from &#39;react&#39;;
+              import styled from &#39;styled-components&#39;;
+      
+              const Button = styled.div`
+                  padding: 12px 16px;
+                  border-radius: 4px;
+                  background: black;
+                  color: white;
+                  cursor: pointer;
+              `;
+      
+              export default ({ children }) =&gt; (
+                  &lt;Button
+                      dangerouslySetInnerHTML={{ __html: children }}
+                  /&gt;
+              )
+                </code>
+            </pre>
+        </div>
+        <p>But instead of mounting an <code class="language-markup">&lt;App/&gt;</code> component to <code
+          class="language-markup">Index.js</code> selects static HTML elements with the data attribute <code
+          class="language-html">data-component</code>.</p>
+        <div class="code">
+          <label>Index.js</label>
+          <pre>
+              <code class="language-jsx">import Button from &#39;./components/Button&#39;;
+                  document.querySelectorAll(&#39;[data-component=&quot;Button&quot;]&#39;).forEach(button =&gt; {
+                  ReactDOM.render(
+                  &lt;Button children={button.innerHTML} /&gt;
+                  , button);
+                  })
+              </code>
+            </pre>
+        </div>
+        <br>
+        <p>Then the bundled <code class="language-jsx">index.js</code> file can be used in any non-react context:</p>
+        <div class="code">
+          <label>index.html</label>
+          <pre>
+              <code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
+                    Button Label
+                  &lt;/span&gt;
+                  &lt;script src=&quot;react_bundle.js&quot;&gt;&lt;/script&gt;
+              </code>
+            </pre>
+        </div>
+        <div class="code">
+          <label>↪ Renders as</label>
+          <pre>
+              <code class="language-html src">
+                  &lt;span data-component=&quot;Button&quot;&gt;
+                  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt;
+                  Button Label
+                  &lt;/div&gt;
+                  &lt;/span&gt;
+              </code>
+            </pre>
+        </div>
+        <br>
+        <br>
+        <a class="anchorLink" id="examples"></a>
+        <a class="anchorLink" id="basic"></a>
+        
+        <h2>Examples</h2>
+        <div class="block">
+          <h3>Basic Usage</h2>
+            <p>Using Styled Components 💅</p>
+            <div class="snippet">
+              <span data-component="Label" data-style="display: block;">
+                Label
+              </span>
+              <span data-component="Button">
+                Styled Component
+              </span>
+              <span data-component="OutlineButton">
+                Cancel
+              </span>
+            </div>
+
+            <div class="code">
+              <label>HTML</label>
+              <pre><code class="language-html src"></code></pre>
+            </div>
+            <div class="code">
+              <label>↪ Renders as</label>
+              <pre><code class="language-html dist"></code></pre>
+            </div>
+        </div>
+
+        <a class="anchorLink" id="passedprops"></a>
+        <div class="block">
+          <h3>Passed props</h2>
+            <div class="snippet">
+              <span data-component="RebassButton" data-variant="primary">
+                Rebass Button
+              </span>
+              <span data-component="RebassButton" data-variant="secondary">
+                Rebass Button
+              </span>
+              <span data-component="RebassButton" data-variant="outline">
+                Cancel
+              </span>
+            </div>
+
+            <div class="code">
+              <label>HTML</label>
+              <pre><code class="language-html src"></code></pre>
+            </div>
+            <div class="code">
+              <label>↪ Renders as</label>
+              <pre><code class="language-html dist"></code></pre>
+            </div>
+        </div>
+
+        <a class="anchorLink" id="clickhandlers"></a>
+        <div class="block">
+          <h3>Click handlers</h2>
+            <div class="snippet">
+              <span data-component="Button" onclick="alert('Inline!')">
+                Inline
+              </span>
+              <span data-component="OutlineButton" id="button">
+                By id
+              </span>
+              <script>
+                document.getElementById("button").addEventListener("click", () => {
+                  alert("By id!")
+                })
+              </script>
+            </div>
+
+            <div class="code">
+              <label>HTML</label>
+              <pre><code class="language-html src"></code></pre>
+            </div>
+            <div class="code">
+              <label>↪ Renders as</label>
+              <pre><code class="language-html dist"></code></pre>
+            </div>
+        </div>
+
+        <a class="anchorLink" id="nested"></a>
+        <div class="block">
+          <h3>Nested components</h2>
+            <div class="snippet">
+              <span data-component="Button">
+                <span data-component="Icon" data-icon="info-circle"></span>
+                Styled Component
+              </span>
+            </div>
+            <div class="code">
+              <label>HTML</label>
+              <pre><code class="language-html src"></code></pre>
+            </div>
+            <div class="code">
+              <label>↪ Renders as</label>
+              <pre><code class="language-html dist"></code></pre>
+            </div>
+        </div>
+
+        <a class="anchorLink" id="stateful"></a>
+        <div class="block">
+          <h3>Stateful Components</h2>
+            <div class="snippet">
+              <span data-component="StatefulButton">
+                Click me
+              </span>
+            </div>
+            <div class="code">
+              <label>HTML</label>
+              <pre><code class="language-html src"></code></pre>
+            </div>
+            <div class="code">
+              <label>↪ Renders as</label>
+              <pre><code class="language-html dist"></code></pre>
+            </div>
+        </div>
+
+        <a class="anchorLink" id="callbacks"></a>
+        <div class="block">
+          <h3>Callbacks</h3>
+          <div class="snippet">
+            <span data-component="CallbackButton" data-callback="onSubmitted">
+              <span data-component="Icon" data-icon="paper-plane"></span>
+              Submit Form
+            </span>
+            <script>
+              window.onSubmitted = function () {
+                alert("Done!")
+              }
+            </script>
+          </div>
+          <div class="code">
+            <label>HTML</label>
+            <pre><code class="language-html src"></code></pre>
+          </div>
+          <div class="code">
+            <label>↪ Renders as</label>
+            <pre><code class="language-html dist"></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="scripts/code_snippets.js"></script>
+    <script src="components/dist/react_bundle.js"></script>
+    <script src="scripts/prism.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
