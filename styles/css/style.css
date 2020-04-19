@@ -17,7 +17,8 @@ body {
   padding: 48px; }
   @media only screen and (max-width: 870px) {
     .main {
-      padding: 16px; } }
+      padding: 16px;
+      padding-top: 48px; } }
   .main .row {
     display: flex; }
     .main .row .leftColumn {
