@@ -12,13 +12,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.11.0/beautify.js"></script>
 </head>
 
-<body id="top">
+<body id="basic">
   <div class="main">
     <div class="row">
       <div class="leftColumn">
-        <a href="#top" class="active">Intro</a>
-        <a href="#examples">Examples</a>
-        <a href="#basic">Basic Usage</a>
+        <a href="#basic" class="active">Basic usage</a>
+        <a href="#how">How does it work?</a>
+        <a href="#anyelement">Any element</a>
         <a href="#passedprops">Passed Props</a>
         <a href="#clickhandlers">Click Handlers</a>
         <a href="#nested">Nested</a>
@@ -30,11 +30,29 @@
         <h1>Static-ish React Components</h1>
         <p>Replacing static HTML elements with React components.</p>
         <br>
-        <h2>Intro</h2>
-        <p>Let's say we want to use a <code class="language-jsx">&lt;Button/&gt;</code> component in a non-React context.</p>
-        <p>Instead of a single <code class="language-javascript">ReactDOM.render()</code> function that mounts an <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> selects all elements that have the attribute <code
-          class="language-html">data-component="Button"</code> and renders a <code class="language-jsx">&lt;Button/&gt;</code> component for each.</p>
-        <p>Before rendering though, we preserve the precious, precious contents of our original element (such as the button text) by passing it to our <code class="language-jsx">&lt;Button/&gt;</code> component through the children prop.</p>
+        <h2>Basic usage</h2>
+        <!-- <p>Let's say we want to use a <code class="language-jsx">&lt;Button/&gt;</code> component in a non-React context.</p> -->
+        <div class="code">
+          <label>index.html</label>
+          <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
+  Button Label
+&lt;/span&gt;</code></pre>
+        </div>
+        <div class="code">
+          <label>↪ Renders as</label>
+          <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
+  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt; // &lt;-- that's a styled-component 💅
+    Button Label
+  &lt;/div&gt;
+&lt;/span&gt;</code></pre>
+        </div>
+        <br>
+        <br>
+        <a class="anchorLink" id="how"></a>
+        <h2>How does this work?</h2>
+        <p>Instead of <code class="language-javascript">ReactDOM.render()</code> rendering a single <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> renders a component for each element that specifies a <code
+          class="language-html">data-component</code>.</p>
+        <p>Before rendering though, we pass the contents of our original element to our <code class="language-jsx">&lt;Button/&gt;</code> component through a children prop.</p>
         <div class="code">
           <label>Index.js</label>
           <pre><code class="language-jsx">import Button from &#39;./components/Button&#39;;
@@ -67,30 +85,18 @@ export default ({ children }) =&gt; (
         <br>
         <br>
         <h4>And that's the basic concept. 🎉</h4>
-        <p>The bundled React <strong>index.js</strong> file can be used in any non-react context, replacing standard HTML elements with React components:</p>
+        <p>The bundled React <strong>index.js</strong> file can be used in any non-react context, replacing standard HTML elements with React components.</p>
         <div class="code">
-          <label>index.html</label>
           <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
   Button Label
 &lt;/span&gt;
 &lt;script src=&quot;react_bundle.js&quot;&gt;&lt;/script&gt;</code></pre>
         </div>
-        <div class="code">
-          <label>↪ Renders as</label>
-          <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
-  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt; // 💅 styled-components!
-    Button Label
-  &lt;/div&gt;
-&lt;/span&gt;</code></pre>
-        </div>
         <br>
         <br>
-        <a class="anchorLink" id="examples"></a>
-        <a class="anchorLink" id="basic"></a>
-        
-        <h2>Examples</h2>
+        <a class="anchorLink" id="anyelement"></a>
         <div class="block">
-          <h3>Basic Usage</h2>
+          <h3>Any Element</h2>
             <div class="snippet">
               <span data-component="Label" data-style="display: block;">
                 Label
