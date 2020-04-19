@@ -11,6 +11,10 @@ body {
     }
 }
 
+a {
+    text-decoration: none;
+}
+
 .main {
     margin: 0 auto;
     width: 100%;
@@ -33,7 +37,6 @@ body {
                 display: block;
                 text-align: right;
                 font-size: 16px;
-                text-decoration: none;
                 margin-bottom: 8px;
                 color: #555;
                 &:hover {
@@ -126,4 +129,37 @@ strong {
 
 small {
     font-size: 13px;
+}
+
+footer {
+    color: black;
+    @media (prefers-color-scheme: dark) {
+        color: white;
+    }
+    .handle {
+        color: gray;
+        a {
+            color: black;
+            opacity: 1;
+            margin-left: 2px;
+            transition-duration: .2s;
+            &:hover {
+                color: gray;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            color: gray;
+            a {
+                color: white;
+                &:hover {
+                    color: gray;
+                }
+            }
+        }
+    }
+    p {
+        font-size: 14px;
+        margin-top: 32px;
+        opacity: .85;
+    }
 }
