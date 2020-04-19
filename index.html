@@ -30,6 +30,7 @@
         <h1>Static-ish React components</h1>
         <p>Replacing basic HTML elements with React components.</p>
         <br>
+        <div class="block">
         <h2>Basic usage</h2>
         <!-- <p>Let's say we want to use a <code class="language-jsx">&lt;Button/&gt;</code> component in a non-React context.</p> -->
         <div class="code">
@@ -92,21 +93,18 @@ export default ({ children }) =&gt; (
 &lt;/span&gt;
 &lt;script src=&quot;react_bundle.js&quot;&gt;&lt;/script&gt;</code></pre>
         </div>
-        <br>
-        <br>
+        </div>
         <a class="anchorLink" id="anyelement"></a>
         <div class="block">
           <h3>Any Element</h2>
             <p>As long as <strong>index.js</strong> has a component to replace the specified component, this method will work for any simple component, such as a label or button.</p>
             <div class="snippet">
               <span data-component="Label" data-style="display: block;">
-                Label
+                Enter your name
               </span>
+              <span data-component="TextInput" data-placeholder="Your name"></span>
               <span data-component="Button">
-                Styled Component
-              </span>
-              <span data-component="OutlineButton">
-                Cancel
+                Submit
               </span>
             </div>
 
@@ -126,13 +124,13 @@ export default ({ children }) =&gt; (
             <p>Props could be automatically passed by prepending the prop name with <code class="language-html">data-</code> and specifying it on the original element.</p>
             <div class="snippet">
               <span data-component="RebassButton" data-variant="primary">
-                Rebass Button
+                Primary
               </span>
               <span data-component="RebassButton" data-variant="secondary">
-                Rebass Button
+                Secondary
               </span>
               <span data-component="RebassButton" data-variant="outline">
-                Cancel
+                Outline
               </span>
             </div>
             <div class="code">

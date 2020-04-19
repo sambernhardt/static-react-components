@@ -10,6 +10,8 @@ import Icon from './components/Icon';
 import RebassButton from './components/RebassButton';
 import StatefulButton from './components/StatefulButton';
 import CallbackButton from './components/CallbackButton';
+import TextInput from './components/TextInput';
+
 
 document.querySelectorAll('[data-component="Button"]').forEach(button => {
     var { className, id, onclick, innerHTML } = button;
@@ -144,4 +146,20 @@ document.querySelectorAll('[data-component="Label"]').forEach(label => {
     // remove from original element
     label.removeAttribute("class");
     label.removeAttribute("id");
+})
+
+document.querySelectorAll('[data-component="TextInput"]').forEach(input => {
+    const {component, ...attrs} = input.dataset;
+    ReactDOM.render(
+        <TextInput
+            className={input.className}
+            id={input.id ? input.id : null}
+            children={input.innerHTML}
+            {...attrs}
+        />
+    , input);
+
+    // remove from original element
+    input.removeAttribute("class");
+    input.removeAttribute("id");
 })
