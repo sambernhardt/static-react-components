@@ -24,8 +24,8 @@ body {
     .main .row .leftColumn {
       position: fixed;
       top: 42px;
-      left: calc(((100vw - 700px)/2) - 120px);
-      width: 140px;
+      left: calc(((100vw - 700px)/2) - 140px);
+      width: 160px;
       padding: 16px; }
       .main .row .leftColumn a {
         display: block;
