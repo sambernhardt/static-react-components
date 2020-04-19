@@ -27,71 +27,60 @@
       <div class="rightColumn">
         <a class="anchorLink" id="intro"></a>
         <h1>Static-ish React Components</h1>
-        <p>How to replace static HTML elements with React components.</p>
+        <p>Replacing static HTML elements with React components.</p>
         <br>
         <h2>Intro</h2>
-        <p>Let's say we want to use a Button component in a non-React context.</p>
-        <p>Instead of a single <code class="language-javascript">ReactDOM.render()</code> function that mounts an <code class="language-markup">&lt;App/&gt;</code> component, <code class="language-markup">Index.js</code> selects all elements that have the attribute <code
-          class="language-html">data-component="Button"</code>.</p>
-        <p>Before rendering though, and surrendering the contents of our <code class="language-javascript">&lt;span&gt;</code> element, we pass the <code class="language-javascript">innerHTML</code> string to our Button component through the children prop.</p>
+        <p>Let's say we want to use a <code class="language-jsx">&lt;Button/&gt;</code> component in a non-React context.</p>
+        <p>Instead of a single <code class="language-javascript">ReactDOM.render()</code> function that mounts an <code class="language-markup">&lt;App/&gt;</code> component, <strong>Index.js</strong> selects all elements that have the attribute <code
+          class="language-html">data-component="Button"</code> and renders a <code class="language-jsx">&lt;Button/&gt;</code> component for each.</p>
+        <p>Before rendering though, we preserve the precious, precious contents of our original element (such as the button text) by passing it to our <code class="language-jsx">&lt;Button/&gt;</code> component through the children prop.</p>
         <div class="code">
           <label>Index.js</label>
-          <pre>
-              <code class="language-jsx">import Button from &#39;./components/Button&#39;;
-                  document.querySelectorAll(&#39;[data-component=&quot;Button&quot;]&#39;).forEach(button =&gt; {
-                  ReactDOM.render(
-                  &lt;Button children={button.innerHTML} /&gt;
-                  , button);
-                  })
-              </code>
-            </pre>
+          <pre><code class="language-jsx">import Button from &#39;./components/Button&#39;;
+document.querySelectorAll(&#39;[data-component=&quot;Button&quot;]&#39;).forEach(button =&gt; {
+  ReactDOM.render(
+    &lt;Button children={button.innerHTML} /&gt;
+  , button);
+})</code></pre>
         </div>
-        <p>Then, we can define our Button component as usual, but using the <code class="language-markup">dangerouslySetInnerHTML</code> prop to use the original element's <code class="language-javascript">innerHTML</code> string as the component's children:</p>
+        <p>Our <code class="language-jsx">&lt;Button/&gt;</code> component can be defined like any other React component, but uses the <code class="language-markup">dangerouslySetInnerHTML</code> prop to set the component's children as the <code class="language-javascript">innerHTML</code> string from our original element:</p>
         <div class="code">
           <label>Button.js</label>
-          <pre>
-              <code class="language-jsx">import React from &#39;react&#39;;
-              import styled from &#39;styled-components&#39;;
-      
-              const Button = styled.div`
-                  padding: 12px 16px;
-                  border-radius: 4px;
-                  background: black;
-                  color: white;
-                  cursor: pointer;
-              `;
-      
-              export default ({ children }) =&gt; (
-                  &lt;Button
-                      dangerouslySetInnerHTML={{ __html: children }}
-                  /&gt;
-              )
-                </code>
-            </pre>
+          <pre><code class="language-jsx">import React from &#39;react&#39;;
+import styled from &#39;styled-components&#39;;
+
+const Button = styled.div`
+  padding: 12px 16px;
+  border-radius: 4px;
+  background: black;
+  color: white;
+  cursor: pointer;
+`;
+
+export default ({ children }) =&gt; (
+  &lt;Button
+    dangerouslySetInnerHTML={{ __html: children }}
+  /&gt;
+)</code></pre>
         </div>
         <br>
-        <p>Then the bundled <code class="language-jsx">index.js</code> file can be used in any non-react context:</p>
+        <br>
+        <h4>And that's the basic concept. 🎉</h4>
+        <p>The bundled React <code class="language-jsx">index.js</code> file can be used in any non-react context, replacing standard HTML elements with React components:</p>
         <div class="code">
           <label>index.html</label>
-          <pre>
-              <code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
-                    Button Label
-                  &lt;/span&gt;
-                  &lt;script src=&quot;react_bundle.js&quot;&gt;&lt;/script&gt;
-              </code>
-            </pre>
+          <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
+  Button Label
+&lt;/span&gt;
+&lt;script src=&quot;react_bundle.js&quot;&gt;&lt;/script&gt;</code></pre>
         </div>
         <div class="code">
           <label>↪ Renders as</label>
-          <pre>
-              <code class="language-html src">
-                  &lt;span data-component=&quot;Button&quot;&gt;
-                  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt;
-                  Button Label
-                  &lt;/div&gt;
-                  &lt;/span&gt;
-              </code>
-            </pre>
+          <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
+  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt; // 💅 styled-components!
+    Button Label
+  &lt;/div&gt;
+&lt;/span&gt;</code></pre>
         </div>
         <br>
         <br>
@@ -101,7 +90,6 @@
         <h2>Examples</h2>
         <div class="block">
           <h3>Basic Usage</h2>
-            <p>Using Styled Components 💅</p>
             <div class="snippet">
               <span data-component="Label" data-style="display: block;">
                 Label

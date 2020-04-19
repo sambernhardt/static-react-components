@@ -11,10 +11,12 @@ setTimeout(() => {
     setScrollPosition();
 }, 1000)
 
+const middleOfScreenOffset = (window.innerHeight / 2) - 100;
+
 function setScrollPosition() {
     positions.forEach((pos, i) => {
         if (!links[i]) return;
-        var scroll = window.scrollY + 24;
+        var scroll = window.scrollY + 24 + middleOfScreenOffset;
         if (scroll >= pos && scroll < positions[i+1]) {
             links[i].classList.add("active")
         } else {

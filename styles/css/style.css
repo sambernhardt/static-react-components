@@ -52,22 +52,25 @@ body {
     .main .row .rightColumn {
       width: 100%; }
 
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+  margin-bottom: 14px; }
+
 h1 {
   font-size: 48px;
   margin-bottom: 24px; }
 
 h2 {
-  font-size: 32px; }
+  font-size: 32px;
+  margin-bottom: 20px; }
 
 h3 {
-  font-size: 24px; }
-
-h1, h2, h3, h4, h5 {
-  font-weight: bold;
-  margin-bottom: 14px; }
+  font-size: 24px;
+  margin-bottom: 16px; }
 
 p {
-  margin: 20px 0; }
+  margin: 20px 0;
+  line-height: 26px; }
 
 .block {
   padding: 24px;
@@ -98,5 +101,8 @@ pre {
 .anchorLink {
   position: relative;
   top: -24px; }
+
+strong {
+  font-weight: 800; }
 
 /*# sourceMappingURL=style.css.map */
