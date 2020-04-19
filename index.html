@@ -27,8 +27,8 @@
       </div>
       <div class="rightColumn">
         <a class="anchorLink" id="intro"></a>
-        <h1>Static-ish React Components</h1>
-        <p>Replacing static HTML elements with React components.</p>
+        <h1>Static-ish React components</h1>
+        <p>Replacing basic HTML elements with React components.</p>
         <br>
         <h2>Basic usage</h2>
         <!-- <p>Let's say we want to use a <code class="language-jsx">&lt;Button/&gt;</code> component in a non-React context.</p> -->
@@ -51,11 +51,10 @@
         <br>
         <a class="anchorLink" id="how"></a>
         <h2>How does this work?</h2>
-        <p>Instead of <code class="language-javascript">ReactDOM.render()</code> rendering a single <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> renders a component for each element that specifies a <code
-          class="language-html">data-component</code>.</p>
-        <p>Before rendering though, we pass the contents of our original element to our <code class="language-jsx">&lt;Button/&gt;</code> component through a children prop.</p>
+        <p>Instead of <code class="language-javascript">ReactDOM.render()</code> rendering a single <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> renders a component inside each element that specifies a <code class="language-html">data-component</code>.</p>
+        <p>Before rendering though, we pass the contents of our original element to our <code class="language-jsx">&lt;Button/&gt;</code> component using a children prop.</p>
         <div class="code">
-          <label>Index.js</label>
+          <label>index.js</label>
           <pre><code class="language-jsx">import Button from &#39;./components/Button&#39;;
 document.querySelectorAll(&#39;[data-component=&quot;Button&quot;]&#39;).forEach(button =&gt; {
   ReactDOM.render(
@@ -98,6 +97,7 @@ export default ({ children }) =&gt; (
         <a class="anchorLink" id="anyelement"></a>
         <div class="block">
           <h3>Any Element</h2>
+            <p>As long as <strong>index.js</strong> has a component to replace the specified component, this method will work for any simple component, such as a label or button.</p>
             <div class="snippet">
               <span data-component="Label" data-style="display: block;">
                 Label
@@ -123,6 +123,7 @@ export default ({ children }) =&gt; (
         <a class="anchorLink" id="passedprops"></a>
         <div class="block">
           <h3>Passed props</h2>
+            <p>Props could be automatically passed by prepending the prop name with <code class="language-html">data-</code> and specifying it on the original element.</p>
             <div class="snippet">
               <span data-component="RebassButton" data-variant="primary">
                 Rebass Button
@@ -134,20 +135,50 @@ export default ({ children }) =&gt; (
                 Cancel
               </span>
             </div>
-
             <div class="code">
               <label>HTML</label>
               <pre><code class="language-html src"></code></pre>
+            </div>
+            <div class="code">
+              <label>index.js</label>
+              <pre><code class="language-jsx">document.querySelectorAll(&#39;[data-component=&quot;RebassButton&quot;]&#39;).forEach(button =&gt; {
+  const {component, ...attrs} = button.dataset;
+  ReactDOM.render(
+      &lt;ThemeProvider theme={theme}&gt;
+          &lt;RebassButton
+              children={button.innerHTML}
+              {...attrs}
+          /&gt;
+      &lt;/ThemeProvider&gt;
+  , button);
+})</code></pre>
+              <div class="code">
+                <label>RebassButton.js</label>
+                <pre><code class="language-jsx">import React from &#39;react&#39;;
+import { Button } from &#39;rebass&#39;;
+
+export default ({ children, ...props }) =&gt; {
+    return (
+        &lt;Button
+            mb=&quot;8px&quot;
+            dangerouslySetInnerHTML={{ __html: children }}
+            {...props}
+        /&gt;
+    )
+}</code></pre>
             </div>
             <div class="code">
               <label>↪ Renders as</label>
               <pre><code class="language-html dist"></code></pre>
             </div>
         </div>
+      </div>
 
         <a class="anchorLink" id="clickhandlers"></a>
         <div class="block">
           <h3>Click handlers</h2>
+            <p>Click handlers can be preserved either by passing <code class="language-html">onclick</code> functions through to the component or by forwarding <code class="language-html">class</code> and <code class="language-html">id</code> attributes.</p>
+</p>
             <div class="snippet">
               <span data-component="Button" onclick="alert('Inline!')">
                 Inline
@@ -175,6 +206,7 @@ export default ({ children }) =&gt; (
         <a class="anchorLink" id="nested"></a>
         <div class="block">
           <h3>Nested components</h2>
+            <!-- <p>It works for nested components too! This allows you to retain any relational styling written in styled-components.</p> -->
             <div class="snippet">
               <span data-component="Button">
                 <span data-component="Icon" data-icon="info-circle"></span>
@@ -232,6 +264,7 @@ export default ({ children }) =&gt; (
             <pre><code class="language-html dist"></code></pre>
           </div>
         </div>
+        <p>This page was not built using React.<br><small>In love in Philadelphia ♥</small></p>
       </div>
     </div>
     <script src="scripts/code_snippets.js"></script>
