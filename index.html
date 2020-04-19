@@ -42,7 +42,7 @@
         <div class="code">
           <label>↪ Renders as</label>
           <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
-  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt; // &lt;-- that's a styled-component 💅
+  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt; // &lt;-- that's a styled-component! 💅
     Button Label
   &lt;/div&gt;
 &lt;/span&gt;</code></pre>
@@ -52,7 +52,7 @@
         <a class="anchorLink" id="how"></a>
         <h2>How does this work?</h2>
         <p>Instead of <code class="language-javascript">ReactDOM.render()</code> rendering a single <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> renders a component inside each element that specifies a <code class="language-html">data-component</code>.</p>
-        <p>Before rendering though, we pass the contents of our original element to our <code class="language-jsx">&lt;Button/&gt;</code> component using a children prop.</p>
+        <p>Before rendering though, it passes the contents of the original element to the <code class="language-jsx">&lt;Button/&gt;</code> component using a children prop.</p>
         <div class="code">
           <label>index.js</label>
           <pre><code class="language-jsx">import Button from &#39;./components/Button&#39;;
@@ -62,7 +62,7 @@ document.querySelectorAll(&#39;[data-component=&quot;Button&quot;]&#39;).forEach
   , button);
 })</code></pre>
         </div>
-        <p>Our <code class="language-jsx">&lt;Button/&gt;</code> component can be defined like any other React component, but uses the <code class="language-markup">dangerouslySetInnerHTML</code> prop to set the component's children as the <code class="language-javascript">innerHTML</code> string from our original element:</p>
+        <p>The <code class="language-jsx">&lt;Button/&gt;</code> component can be defined like any other React component, but uses the <code class="language-markup">dangerouslySetInnerHTML</code> prop to set the component's children as the <code class="language-javascript">innerHTML</code> string from the original element:</p>
         <div class="code">
           <label>Button.js</label>
           <pre><code class="language-jsx">import React from &#39;react&#39;;

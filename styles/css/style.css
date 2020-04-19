@@ -79,7 +79,7 @@ p {
   background: white;
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid #f3f3f3; }
+  border: 1px solid #ddd; }
   @media (prefers-color-scheme: dark) {
     .snippet {
       border: none; } }
