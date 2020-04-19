@@ -30,8 +30,23 @@
         <p>How to replace static HTML elements with React components.</p>
         <br>
         <h2>Intro</h2>
-        <p>Let's say we want to replace a static HTML button with a componentized version.</p>
-        <p>Define your Button component as usual, but use the <code>dangerouslySetInnerHTML</code> prop to pass any children through to the Button's inner HTML:</p>
+        <p>Let's say we want to use a Button component in a non-React context.</p>
+        <p>Instead of a single <code class="language-javascript">ReactDOM.render()</code> function that mounts an <code class="language-markup">&lt;App/&gt;</code> component, <code class="language-markup">Index.js</code> selects all elements that have the attribute <code
+          class="language-html">data-component="Button"</code>.</p>
+        <p>Before rendering though, and surrendering the contents of our <code class="language-javascript">&lt;span&gt;</code> element, we pass the <code class="language-javascript">innerHTML</code> string to our Button component through the children prop.</p>
+        <div class="code">
+          <label>Index.js</label>
+          <pre>
+              <code class="language-jsx">import Button from &#39;./components/Button&#39;;
+                  document.querySelectorAll(&#39;[data-component=&quot;Button&quot;]&#39;).forEach(button =&gt; {
+                  ReactDOM.render(
+                  &lt;Button children={button.innerHTML} /&gt;
+                  , button);
+                  })
+              </code>
+            </pre>
+        </div>
+        <p>Then, we can define our Button component as usual, but using the <code class="language-markup">dangerouslySetInnerHTML</code> prop to use the original element's <code class="language-javascript">innerHTML</code> string as the component's children:</p>
         <div class="code">
           <label>Button.js</label>
           <pre>
@@ -52,21 +67,6 @@
                   /&gt;
               )
                 </code>
-            </pre>
-        </div>
-        <p>But instead of mounting an <code class="language-markup">&lt;App/&gt;</code> component to <code
-          class="language-markup">Index.js</code> selects static HTML elements with the data attribute <code
-          class="language-html">data-component</code>.</p>
-        <div class="code">
-          <label>Index.js</label>
-          <pre>
-              <code class="language-jsx">import Button from &#39;./components/Button&#39;;
-                  document.querySelectorAll(&#39;[data-component=&quot;Button&quot;]&#39;).forEach(button =&gt; {
-                  ReactDOM.render(
-                  &lt;Button children={button.innerHTML} /&gt;
-                  , button);
-                  })
-              </code>
             </pre>
         </div>
         <br>

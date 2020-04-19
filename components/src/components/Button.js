@@ -17,10 +17,8 @@ const Button = styled.div`
 export default ({ children, ...props}) => {
     return (
         <Button
-            // dangerouslySetInnerHTML={{ __html: children }}
+            dangerouslySetInnerHTML={{ __html: children }}
             {...props}
-        >
-            {children}
-        </Button>
+        />
     )
 }
