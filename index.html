@@ -3,6 +3,7 @@
 
 <head>
   <title>Static-ish React Components</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/css/reset.css">
   <link rel="stylesheet" href="styles/css/style.css">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -31,7 +32,7 @@
         <br>
         <h2>Intro</h2>
         <p>Let's say we want to use a <code class="language-jsx">&lt;Button/&gt;</code> component in a non-React context.</p>
-        <p>Instead of a single <code class="language-javascript">ReactDOM.render()</code> function that mounts an <code class="language-markup">&lt;App/&gt;</code> component, <strong>Index.js</strong> selects all elements that have the attribute <code
+        <p>Instead of a single <code class="language-javascript">ReactDOM.render()</code> function that mounts an <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> selects all elements that have the attribute <code
           class="language-html">data-component="Button"</code> and renders a <code class="language-jsx">&lt;Button/&gt;</code> component for each.</p>
         <p>Before rendering though, we preserve the precious, precious contents of our original element (such as the button text) by passing it to our <code class="language-jsx">&lt;Button/&gt;</code> component through the children prop.</p>
         <div class="code">
@@ -66,7 +67,7 @@ export default ({ children }) =&gt; (
         <br>
         <br>
         <h4>And that's the basic concept. 🎉</h4>
-        <p>The bundled React <code class="language-jsx">index.js</code> file can be used in any non-react context, replacing standard HTML elements with React components:</p>
+        <p>The bundled React <strong>index.js</strong> file can be used in any non-react context, replacing standard HTML elements with React components:</p>
         <div class="code">
           <label>index.html</label>
           <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;

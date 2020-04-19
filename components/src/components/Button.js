@@ -6,6 +6,7 @@ const Button = styled.div`
     padding: 12px 16px;
     border-radius: 4px;
     margin-right: 8px;
+    margin-bottom: 8px;
     background: black;
     color: white;
     transition-duration: .1s;

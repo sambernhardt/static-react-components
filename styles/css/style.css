@@ -3,10 +3,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: white;
-  color: black; }
+  color: #111; }
   @media (prefers-color-scheme: dark) {
     body {
-      background: black;
+      background: #111;
       color: white; } }
 
 .main {
