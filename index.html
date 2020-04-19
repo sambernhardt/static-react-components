@@ -53,7 +53,7 @@
         <br>
         <a class="anchorLink" id="how"></a>
         <h2>How does it work?</h2>
-        <p>Instead of <code class="language-javascript">ReactDOM.render()</code> rendering a single <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> renders a component inside each element that specifies a <code class="language-html">data-component</code>.</p>
+        <p>Instead of <code class="language-javascript">ReactDOM.render()</code> rendering a single <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> renders a component inside each element that has a <code class="language-html">data‑component</code> attribute.</p>
         <p>Before rendering though, it passes the contents of the original element to the <code class="language-jsx">&lt;Button/&gt;</code> component using a children prop.</p>
         <div class="code">
           <label>index.js</label>
@@ -98,7 +98,7 @@ export default ({ children }) =&gt; (
         <a class="anchorLink" id="anyelement"></a>
         <div class="block">
           <h3>Any Element</h2>
-            <p>As long as <strong>index.js</strong> has a component to replace the specified component, this method will work for any simple component, such as a label or button.</p>
+            <p>As long as <strong>index.js</strong> has a component to replace the specified <code class="language-html">data‑component</code>, this method will work for simple components like labels or buttons.</p>
             <div class="snippet">
               <span data-component="Label" data-style="display: block;">
                 Enter your name
