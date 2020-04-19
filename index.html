@@ -19,10 +19,10 @@
       <div class="leftColumn">
         <a href="#basic" class="active">Basic usage</a>
         <a href="#how">How does it work?</a>
-        <a href="#anyelement">Any element</a>
-        <a href="#passedprops">Passed Props</a>
-        <a href="#clickhandlers">Click Handlers</a>
-        <a href="#nested">Nested</a>
+        <a href="#anyelement">Supported Elements</a>
+        <a href="#passedprops">Props</a>
+        <a href="#handlers">Handlers</a>
+        <a href="#nesting">Nesting</a>
         <a href="#stateful">Stateful</a>
         <a href="#callbacks">Callbacks</a>
       </div>
@@ -97,8 +97,8 @@ export default ({ children }) =&gt; (
         </div>
         <a class="anchorLink" id="anyelement"></a>
         <div class="block">
-          <h3>Any Element</h2>
-            <p>As long as <strong>index.js</strong> has a component to replace the specified <code class="language-html">data‑component</code>, this method will work for simple components like labels or buttons.</p>
+          <h3>Supported Elements</h2>
+            <p>This method works best for simple components like labels or buttons. However, as long as <strong>index.js</strong> knows what component to replace the specified element with, this method could theoretically work for any component.</p>
             <div class="snippet">
               <span data-component="Label" data-style="display: block;">
                 Enter your name
@@ -121,7 +121,7 @@ export default ({ children }) =&gt; (
 
         <a class="anchorLink" id="passedprops"></a>
         <div class="block">
-          <h3>Passed props</h2>
+          <h3>Props</h2>
             <p>Props could be automatically passed by prepending the prop name with <code class="language-html">data-</code> and specifying it on the original element.</p>
             <div class="snippet">
               <span data-component="RebassButton" data-variant="primary">
@@ -173,11 +173,10 @@ export default ({ children, ...props }) =&gt; {
         </div>
       </div>
 
-        <a class="anchorLink" id="clickhandlers"></a>
+        <a class="anchorLink" id="handlers"></a>
         <div class="block">
-          <h3>Click handlers</h2>
+          <h3>Handlers</h2>
             <p>Click handlers can be preserved either by passing <code class="language-html">onclick</code> functions through to the component or by forwarding <code class="language-html">class</code> and <code class="language-html">id</code> attributes.</p>
-</p>
             <div class="snippet">
               <span data-component="Button" onclick="alert('Inline!')">
                 Inline
@@ -202,10 +201,10 @@ export default ({ children, ...props }) =&gt; {
             </div>
         </div>
 
-        <a class="anchorLink" id="nested"></a>
+        <a class="anchorLink" id="nesting"></a>
         <div class="block">
-          <h3>Nested components</h2>
-            <!-- <p>It works for nested components too! This allows you to retain any relational styling written in styled-components.</p> -->
+          <h3>Nesting components</h2>
+            <!-- <p>It works for nesting components too! This allows you to retain any relational styling written in styled-components.</p> -->
             <div class="snippet">
               <span data-component="Button">
                 <span data-component="Icon" data-icon="info-circle"></span>
