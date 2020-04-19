@@ -11,14 +11,14 @@ pre[class*="language-"] {
 	color: black;
 	background: none;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-family: Roboto Mono, monospace;
 	font-size: 1em;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
-	line-height: 1.5;
+	line-height: 1.5em;
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -59,7 +59,7 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
 	background: #f5f2f0;
-	background: #ececec;
+	background: #eceff0;
 }
 
 /* Inline code */
@@ -100,7 +100,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #690;
+	color: rgb(5, 117, 11);
 }
 
 .token.operator,
