@@ -11,9 +11,8 @@ const OutlineButton = styled.div`
     cursor: pointer;
     margin-right: 8px;
 
-    &:hover {
-        background: #cecece;
-    }
+    &:hover { background: #cecece;}
+    &:active { background: #bbb;}
 
     i {
         margin-right: 8px;

@@ -13,6 +13,7 @@ const Button = styled.div`
     cursor: pointer;
 
     &:hover { background: #232323;}
+    &:active { background: #333;}
 `;
 
 export default ({ children, ...props}) => {

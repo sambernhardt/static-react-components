@@ -79,6 +79,14 @@ p {
 .block {
   margin-bottom: 64px; }
 
+#useCase ul li {
+  line-height: 22px;
+  color: white;
+  padding: 20px 24px;
+  border-radius: 8px;
+  background: #222;
+  margin-bottom: 8px; }
+
 .snippet {
   background: white;
   padding: 16px;

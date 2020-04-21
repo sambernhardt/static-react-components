@@ -12,6 +12,7 @@ const Button = styled.div`
     cursor: pointer;
 
     &:hover { background: #222;}
+    &:active { background: #333;}
 `;
 
 const spin = keyframes`

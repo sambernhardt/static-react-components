@@ -19,17 +19,18 @@
       <div class="leftColumn">
         <a href="#basic" class="active">Basic usage</a>
         <a href="#how">How does it work?</a>
-        <a href="#anyelement">Supported Elements</a>
+        <a href="#anyelement">Supported elements</a>
         <a href="#passedprops">Props</a>
         <a href="#handlers">Handlers</a>
         <a href="#nesting">Nesting</a>
         <a href="#stateful">Stateful</a>
         <a href="#callbacks">Callbacks</a>
+        <!-- <a href="#uses">Use cases</a> -->
       </div>
       <div class="rightColumn">
         <a class="anchorLink" id="intro"></a>
         <h1>Static-ish React components</h1>
-        <p>How to use React components in non-React contexts.</p>
+        <p>How to use your React components on static pages.</p>
         <br>
         <div class="block">
         <h2>Basic usage</h2>
@@ -97,8 +98,8 @@ export default ({ children }) =&gt; (
         </div>
         <a class="anchorLink" id="anyelement"></a>
         <div class="block">
-          <h3>Supported Elements</h2>
-            <p>This method works best for simple components like labels or buttons. However, as long as <strong>index.js</strong> knows what component to replace the specified element with, this method could theoretically work for any component.</p>
+          <h3>Supported elements</h2>
+            <p>This method works best for UI primitives like labels or buttons. However, as long as <strong>index.js</strong> knows what component to replace the specified element with, this method could theoretically work for any component.</p>
             <div class="snippet">
               <span data-component="Label" data-style="display: block;">
                 Enter your name
@@ -262,10 +263,18 @@ export default ({ children, ...props }) =&gt; {
             <pre><code class="language-html dist"></code></pre>
           </div>
         </div>
+        <a class="anchorLink" id="uses"></a>
+        <!-- <div id="useCase" class="block">
+          <h3>Use cases</h3>
+          <ul>
+            <li>Use case 1</li>
+            <li>Use case 2</li>
+          </ul>
+        </div> -->
         <footer>
           <span class="handle">
             by <a href="http://samuelbernhardt.com">Sam Bernhardt</a>
-        </span>
+          </span>
           <p>This page was not built using React<br><small>with love in Philadelphia ♥</small></p>
         </footer>
       </div>
