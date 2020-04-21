@@ -27,30 +27,32 @@ function setScrollPosition() {
 }
 
 var scroll = new SmoothScroll('a[href*="#"]',{
-	speed: 300
+    speed: 300,
+    durationMax: 800,
+    durationMin: 300,
 });
 
-if (window.location.href.indexOf("#") == -1) {
-    var hiddenLinks = document.querySelectorAll("a.hidden");
-    setTimeout(() => {
-        hiddenLinks.forEach((block, i) => {
-            setTimeout(() => {
-                block.classList.remove("hidden");
-            }, (EasingFunctions.easeOutCubic(i/hiddenLinks.length)*1000))
-        })
-        setTimeout(() => {
-            document.querySelectorAll("div.hidden").forEach((block, i) => {
-                setTimeout(() => {
-                    block.classList.remove("hidden");
-                }, i * 500)
-            })
-        }, 1100)
-    }, 500)
-} else {
-    document.querySelectorAll(".hidden").forEach((block, i) => {
-        block.classList.remove("hidden");
-    })
-}
+// if (window.location.href.indexOf("#") == -1) {
+//     var hiddenLinks = document.querySelectorAll("a.hidden");
+//     setTimeout(() => {
+//         hiddenLinks.forEach((block, i) => {
+//             setTimeout(() => {
+//                 block.classList.remove("hidden");
+//             }, (EasingFunctions.easeOutCubic(i/hiddenLinks.length)*1000))
+//         })
+//         setTimeout(() => {
+//             document.querySelectorAll("div.hidden").forEach((block, i) => {
+//                 setTimeout(() => {
+//                     block.classList.remove("hidden");
+//                 }, i * 500)
+//             })
+//         }, 1100)
+//     }, 500)
+// } else {
+//     document.querySelectorAll(".hidden").forEach((block, i) => {
+//         block.classList.remove("hidden");
+//     })
+// }
 
 
 /*
