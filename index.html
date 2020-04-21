@@ -17,14 +17,14 @@
   <div class="main">
     <div class="row">
       <div class="leftColumn">
-        <a href="#basic" class="active">Basic usage</a>
-        <a href="#how">How does it work?</a>
-        <a href="#anyelement">Supported elements</a>
-        <a href="#passedprops">Props</a>
-        <a href="#handlers">Handlers</a>
-        <a href="#nesting">Nesting</a>
-        <a href="#stateful">Stateful</a>
-        <a href="#callbacks">Callbacks</a>
+        <a href="#basic" class="active hidden">Basic usage</a>
+        <a href="#how" class="hidden">How does it work?</a>
+        <a href="#supported" class="hidden">Supported elements</a>
+        <a href="#props" class="hidden">Props</a>
+        <a href="#handlers" class="hidden">Handlers</a>
+        <a href="#nesting" class="hidden">Nesting</a>
+        <a href="#stateful" class="hidden">Stateful</a>
+        <a href="#callbacks" class="hidden">Callbacks</a>
         <!-- <a href="#uses">Use cases</a> -->
       </div>
       <div class="rightColumn">
@@ -32,26 +32,25 @@
         <h1>Static-ish React components</h1>
         <p>How to use your React components on static pages.</p>
         <br>
-        <div class="block">
+        <div class="block hidden">
         <h2>Basic usage</h2>
         <!-- <p>Let's say we want to use a <code class="language-jsx">&lt;Button/&gt;</code> component in a non-React context.</p> -->
         <div class="code">
           <label>index.html</label>
           <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
   Button Label
-&lt;/span&gt;
-&lt;script src=&quot;react_bundle.js&quot;&gt;&lt;/script&gt;</code></pre>
+&lt;/span&gt;</code></pre>
         </div>
         <div class="code">
           <label>↪ Renders as</label>
           <pre><code class="language-html src">&lt;span data-component=&quot;Button&quot;&gt;
-  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt; // that's a styled-component! 💅
+  &lt;div class=&quot;sc-AxirZ bJCmFu&quot;&gt; // 💅!
     Button Label
   &lt;/div&gt;
 &lt;/span&gt;</code></pre>
         </div>
-        <br>
-        <br>
+        </div>
+        <div class="block hidden">
         <a class="anchorLink" id="how"></a>
         <h2>How does it work?</h2>
         <p>Instead of <code class="language-javascript">ReactDOM.render()</code> rendering a single <code class="language-markup">&lt;App/&gt;</code> component, <strong>index.js</strong> renders a component inside each element that has a <code class="language-html">data‑component</code> attribute.</p>
@@ -96,8 +95,8 @@ export default ({ children }) =&gt; (
 &lt;script src=&quot;react_bundle.js&quot;&gt;&lt;/script&gt;</code></pre>
         </div>
         </div>
-        <a class="anchorLink" id="anyelement"></a>
-        <div class="block">
+        <a class="anchorLink" id="supported"></a>
+        <div class="block hidden">
           <h3>Supported elements</h2>
             <p>This method works best for UI primitives like labels or buttons. However, as long as <strong>index.js</strong> knows what component to replace the specified element with, this method could theoretically work for any component.</p>
             <div class="snippet">
@@ -120,8 +119,8 @@ export default ({ children }) =&gt; (
             </div>
         </div>
 
-        <a class="anchorLink" id="passedprops"></a>
-        <div class="block">
+        <a class="anchorLink" id="props"></a>
+        <div class="block hidden">
           <h3>Props</h2>
             <p>Props could be automatically passed by prepending the prop name with <code class="language-html">data-</code> and specifying it on the original element.</p>
             <div class="snippet">
@@ -175,7 +174,7 @@ export default ({ children, ...props }) =&gt; {
       </div>
 
         <a class="anchorLink" id="handlers"></a>
-        <div class="block">
+        <div class="block hidden">
           <h3>Handlers</h2>
             <p>Click handlers can be preserved either by passing <code class="language-html">onclick</code> functions through to the component or by forwarding <code class="language-html">class</code> and <code class="language-html">id</code> attributes.</p>
             <div class="snippet">
@@ -203,7 +202,7 @@ export default ({ children, ...props }) =&gt; {
         </div>
 
         <a class="anchorLink" id="nesting"></a>
-        <div class="block">
+        <div class="block hidden">
           <h3>Nesting components</h2>
             <!-- <p>It works for nesting components too! This allows you to retain any relational styling written in styled-components.</p> -->
             <div class="snippet">
@@ -223,7 +222,7 @@ export default ({ children, ...props }) =&gt; {
         </div>
 
         <a class="anchorLink" id="stateful"></a>
-        <div class="block">
+        <div class="block hidden">
           <h3>Stateful Components</h2>
             <div class="snippet">
               <span data-component="StatefulButton">
@@ -241,7 +240,7 @@ export default ({ children, ...props }) =&gt; {
         </div>
 
         <a class="anchorLink" id="callbacks"></a>
-        <div class="block">
+        <div class="block hidden">
           <h3>Callbacks</h3>
           <div class="snippet">
             <span data-component="CallbackButton" data-callback="onSubmitted">
@@ -264,7 +263,7 @@ export default ({ children, ...props }) =&gt; {
           </div>
         </div>
         <a class="anchorLink" id="uses"></a>
-        <!-- <div id="useCase" class="block">
+        <!-- <div id="useCase" class="block hidden">
           <h3>Use cases</h3>
           <ul>
             <li>Use case 1</li>
@@ -282,6 +281,7 @@ export default ({ children, ...props }) =&gt; {
     <script src="scripts/code_snippets.js"></script>
     <script src="components/dist/react_bundle.js"></script>
     <script src="scripts/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 

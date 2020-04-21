@@ -9,6 +9,7 @@ body {
         background: #111;
         color: white;
     }
+    scroll-behavior: smooth;
 }
 
 a {
@@ -33,18 +34,25 @@ a {
             left: calc(((100vw - 700px)/2) - 140px);
             width: 160px;
             padding: 16px;
+            overflow: visible;
             a {
                 display: block;
                 text-align: right;
                 font-size: 16px;
                 margin-bottom: 8px;
                 color: #555;
+                transform: none;
+                transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1), transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
                 &:hover {
                     color: black;
                 }
                 &.active {
                     color: black;
                     font-weight: bold;
+                }
+                &.hidden { 
+                    // opacity: 0;
+                    // transform: translateY(204px);
                 }
                 @media (prefers-color-scheme: dark) {
                     color: #888;
@@ -94,6 +102,14 @@ p {
 
 .block {
     margin-bottom: 64px;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    // min-height: 800px;
+}
+
+.hidden { 
+    // opacity: 0;
+    // transform: translateY(204px);
 }
 
 #useCase {
@@ -141,7 +157,7 @@ strong {
 }
 
 small {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 footer {
