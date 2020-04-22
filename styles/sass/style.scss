@@ -31,7 +31,7 @@ a {
         .leftColumn {
             position: fixed;
             top: 42px;
-            left: calc(((100vw - 700px)/2) - 140px);
+            left: calc(((100vw - 700px)/2) - 160px);
             width: 160px;
             padding: 16px;
             overflow: visible;
@@ -88,6 +88,15 @@ h1 {
     }
 }
 
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 32px;
+    color: #07a;
+    font-weight: 600;
+    @media (prefers-color-scheme: dark) {
+        color: #ffcb6b;
+    }
+}
 h2 {
     font-size: 32px;
     margin-bottom: 20px;
