@@ -14,6 +14,13 @@ body {
 
 a {
     text-decoration: none;
+    color: #07a;
+    &:hover {
+        text-decoration: underline;
+    }
+    @media (prefers-color-scheme: dark) {
+        color: #c3e88d;
+    }
 }
 
 .main {
@@ -83,13 +90,14 @@ h1, h2, h3, h4, h5 {
 h1 {
     font-size: 64px;
     margin-bottom: 24px;
+    letter-spacing: -1px;
     @media only screen and (max-width: 470px) {
         font-size: 48px;
     }
 }
 
 .subtitle {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 32px;
     color: #07a;
     font-weight: 600;
@@ -172,31 +180,31 @@ small {
     font-size: 12px;
 }
 
-footer {
-    color: black;
-    @media (prefers-color-scheme: dark) {
-        color: white;
+.handle {
+    color: gray;
+    a {
+        color: black;
+        opacity: 1;
+        margin-left: 2px;
+        transition-duration: .2s;
+        &:hover {
+            color: gray;
+        }
     }
-    .handle {
+    @media (prefers-color-scheme: dark) {
         color: gray;
         a {
-            color: black;
-            opacity: 1;
-            margin-left: 2px;
-            transition-duration: .2s;
+            color: white;
             &:hover {
                 color: gray;
             }
         }
-        @media (prefers-color-scheme: dark) {
-            color: gray;
-            a {
-                color: white;
-                &:hover {
-                    color: gray;
-                }
-            }
-        }
+    }
+}
+footer {
+    color: black;
+    @media (prefers-color-scheme: dark) {
+        color: white;
     }
     p {
         font-size: 14px;

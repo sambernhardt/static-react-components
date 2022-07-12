@@ -12,7 +12,13 @@ body {
       color: white; } }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #07a; }
+  a:hover {
+    text-decoration: underline; }
+  @media (prefers-color-scheme: dark) {
+    a {
+      color: #c3e88d; } }
 
 .main {
   margin: 0 auto;
@@ -66,13 +72,14 @@ h1, h2, h3, h4, h5 {
 
 h1 {
   font-size: 64px;
-  margin-bottom: 24px; }
+  margin-bottom: 24px;
+  letter-spacing: -1px; }
   @media only screen and (max-width: 470px) {
     h1 {
       font-size: 48px; } }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 32px;
   color: #07a;
   font-weight: 600; }
@@ -134,27 +141,28 @@ strong {
 small {
   font-size: 12px; }
 
+.handle {
+  color: gray; }
+  .handle a {
+    color: black;
+    opacity: 1;
+    margin-left: 2px;
+    transition-duration: .2s; }
+    .handle a:hover {
+      color: gray; }
+  @media (prefers-color-scheme: dark) {
+    .handle {
+      color: gray; }
+      .handle a {
+        color: white; }
+        .handle a:hover {
+          color: gray; } }
+
 footer {
   color: black; }
   @media (prefers-color-scheme: dark) {
     footer {
       color: white; } }
-  footer .handle {
-    color: gray; }
-    footer .handle a {
-      color: black;
-      opacity: 1;
-      margin-left: 2px;
-      transition-duration: .2s; }
-      footer .handle a:hover {
-        color: gray; }
-    @media (prefers-color-scheme: dark) {
-      footer .handle {
-        color: gray; }
-        footer .handle a {
-          color: white; }
-          footer .handle a:hover {
-            color: gray; } }
   footer p {
     font-size: 14px;
     margin-top: 32px;
